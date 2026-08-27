@@ -1,0 +1,75 @@
+/* ==========================================================================
+   🎮 MOODLE MOBILE APP DUOLINGO STYLING (Ionic / Angular)
+   ========================================================================== */
+
+/* 1. Mobile Topic Unit Headers */
+core-course-format ion-card.core-course-section-header,
+core-course-format .core-course-section-title {
+    background: linear-gradient(135deg, #58CC02, #0F172A) !important;
+    color: #ffffff !important;
+    border-radius: 18px !important;
+    padding: 14px 18px !important;
+    font-weight: 800 !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 4px 14px rgba(88, 204, 2, 0.3) !important;
+}
+
+/* 2. Duolingo Serpentine Zigzag Path on Mobile */
+core-course-format core-course-module,
+core-course-format ion-list core-course-module {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 18px 0 !important;
+    transition: transform 0.2s ease !important;
+}
+
+/* Horizontal Zigzag Curves on Mobile */
+core-course-format core-course-module:nth-child(4n+1) {
+    transform: translateX(0);
+}
+
+core-course-format core-course-module:nth-child(4n+2) {
+    transform: translateX(-45px);
+}
+
+core-course-format core-course-module:nth-child(4n+3) {
+    transform: translateX(0);
+}
+
+core-course-format core-course-module:nth-child(4n+4) {
+    transform: translateX(45px);
+}
+
+/* 3. 3D Bouncy Game Buttons on Mobile App */
+core-course-format core-course-module ion-item {
+    --background: #58CC02 !important;
+    --color: #ffffff !important;
+    border-radius: 999px !important;
+    box-shadow: 0 7px 0 #46A302 !important;
+    min-width: 80px !important;
+    max-width: 260px !important;
+    margin: 0 auto !important;
+    font-weight: 800 !important;
+    transition: transform 0.1s ease !important;
+}
+
+core-course-format core-course-module ion-item:active {
+    transform: translateY(4px) !important;
+    box-shadow: 0 2px 0 #46A302 !important;
+}
+
+/* Quiz Specific Gold 3D Node */
+core-course-format core-course-module.addon-mod-quiz ion-item {
+    --background: #FFC800 !important;
+    --color: #451A03 !important;
+    box-shadow: 0 7px 0 #E5B200 !important;
+}
+
+/* SCORM & H5P Specific Blue 3D Node */
+core-course-format core-course-module.addon-mod-scorm ion-item,
+core-course-format core-course-module.addon-mod-h5pactivity ion-item {
+    --background: #1CB0F6 !important;
+    --color: #ffffff !important;
+    box-shadow: 0 7px 0 #1899D6 !important;
+}
