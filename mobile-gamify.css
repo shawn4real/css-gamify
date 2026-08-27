@@ -1,75 +1,150 @@
 /* ==========================================================================
-   🎮 MOODLE MOBILE APP DUOLINGO STYLING (Ionic / Angular)
+   🎮 EXACT DUOLINGO GAMIFIED THEME FOR MOODLE MOBILE APP
    ========================================================================== */
 
-/* 1. Mobile Topic Unit Headers */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap');
+
+/* 1. Unit Gradient Header (With Pill & Trophy) */
 core-course-format ion-card.core-course-section-header,
+core-course-format .core-course-section-header,
 core-course-format .core-course-section-title {
-    background: linear-gradient(135deg, #58CC02, #0F172A) !important;
-    color: #ffffff !important;
-    border-radius: 18px !important;
-    padding: 14px 18px !important;
-    font-weight: 800 !important;
-    margin-bottom: 24px !important;
-    box-shadow: 0 4px 14px rgba(88, 204, 2, 0.3) !important;
+  background: linear-gradient(135deg, #58CC02, #0F172A) !important;
+  color: #ffffff !important;
+  border-radius: 24px !important;
+  padding: 16px 20px !important;
+  margin: 16px auto 30px auto !important;
+  max-width: 90% !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  font-family: 'Fredoka', -apple-system, sans-serif !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  border: none !important;
 }
 
-/* 2. Duolingo Serpentine Zigzag Path on Mobile */
-core-course-format core-course-module,
-core-course-format ion-list core-course-module {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    margin: 18px 0 !important;
-    transition: transform 0.2s ease !important;
+/* Add Trophy 🏆 to Section Header */
+core-course-format .core-course-section-title::after {
+  content: "🏆";
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
 }
 
-/* Horizontal Zigzag Curves on Mobile */
-core-course-format core-course-module:nth-child(4n+1) {
-    transform: translateX(0);
+/* 2. Serpentine Zigzag Layout */
+core-course-format ion-list {
+  background: transparent !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 32px !important;
+  padding: 10px 0 60px 0 !important;
 }
 
-core-course-format core-course-module:nth-child(4n+2) {
-    transform: translateX(-45px);
+core-course-format core-course-module {
+  width: 100% !important;
+  max-width: 240px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
 }
 
-core-course-format core-course-module:nth-child(4n+3) {
-    transform: translateX(0);
+/* Horizontal Zigzag Offsets (Center, Left, Center, Right) */
+core-course-format core-course-module:nth-child(4n+1) { transform: translateX(0); }
+core-course-format core-course-module:nth-child(4n+2) { transform: translateX(-65px); }
+core-course-format core-course-module:nth-child(4n+3) { transform: translateX(0); }
+core-course-format core-course-module:nth-child(4n+4) { transform: translateX(65px); }
+
+/* 3. Floating "START! ★" Bubble on First Activity */
+core-course-format core-course-module:first-child::before {
+  content: "START! ★";
+  position: absolute;
+  top: -26px;
+  background: #58CC02;
+  color: #ffffff;
+  font-family: 'Fredoka', -apple-system, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
+  z-index: 10;
 }
 
-core-course-format core-course-module:nth-child(4n+4) {
-    transform: translateX(45px);
-}
-
-/* 3. 3D Bouncy Game Buttons on Mobile App */
+/* 4. Perfect 3D Circular Node (Icon in the middle) */
 core-course-format core-course-module ion-item {
-    --background: #58CC02 !important;
-    --color: #ffffff !important;
-    border-radius: 999px !important;
-    box-shadow: 0 7px 0 #46A302 !important;
-    min-width: 80px !important;
-    max-width: 260px !important;
-    margin: 0 auto !important;
-    font-weight: 800 !important;
-    transition: transform 0.1s ease !important;
+  --background: transparent !important;
+  --inner-padding-end: 0 !important;
+  --padding-start: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
-core-course-format core-course-module ion-item:active {
-    transform: translateY(4px) !important;
-    box-shadow: 0 2px 0 #46A302 !important;
+/* Circular 3D Button */
+core-course-format core-course-module core-mod-icon,
+core-course-format core-course-module ion-thumbnail,
+core-course-format core-course-module .core-module-icon {
+  width: 76px !important;
+  height: 76px !important;
+  min-width: 76px !important;
+  min-height: 76px !important;
+  border-radius: 50% !important;
+  background-color: #58CC02 !important;
+  box-shadow: 0 8px 0 #46A302 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
 }
 
-/* Quiz Specific Gold 3D Node */
-core-course-format core-course-module.addon-mod-quiz ion-item {
-    --background: #FFC800 !important;
-    --color: #451A03 !important;
-    box-shadow: 0 7px 0 #E5B200 !important;
+core-course-format core-course-module:active core-mod-icon,
+core-course-format core-course-module:active ion-thumbnail {
+  transform: translateY(6px) !important;
+  box-shadow: 0 2px 0 #46A302 !important;
 }
 
-/* SCORM & H5P Specific Blue 3D Node */
-core-course-format core-course-module.addon-mod-scorm ion-item,
-core-course-format core-course-module.addon-mod-h5pactivity ion-item {
-    --background: #1CB0F6 !important;
-    --color: #ffffff !important;
-    box-shadow: 0 7px 0 #1899D6 !important;
+/* Icon / Emoji Sizing inside the Circle */
+core-course-format core-course-module core-mod-icon img,
+core-course-format core-course-module ion-thumbnail img {
+  width: 36px !important;
+  height: 36px !important;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) !important;
+}
+
+/* Quiz Specific Gold Circle */
+core-course-format core-course-module.addon-mod-quiz core-mod-icon,
+core-course-format core-course-module.addon-mod-quiz ion-thumbnail {
+  background-color: #FFC800 !important;
+  box-shadow: 0 8px 0 #E5B200 !important;
+}
+
+/* SCORM & H5P Specific Blue Circle */
+core-course-format core-course-module.addon-mod-scorm core-mod-icon,
+core-course-format core-course-module.addon-mod-h5pactivity core-mod-icon {
+  background-color: #1CB0F6 !important;
+  box-shadow: 0 8px 0 #1899D6 !important;
+}
+
+/* 5. Activity Title OUTSIDE and UNDERNEATH the Circle */
+core-course-format core-course-module ion-label,
+core-course-format core-course-module .core-module-title {
+  margin-top: 10px !important;
+  font-family: 'Fredoka', -apple-system, sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #1E293B !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow: visible !important;
 }
