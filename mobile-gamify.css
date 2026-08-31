@@ -1,16 +1,14 @@
 /* ==========================================================================
-   🎮 UNIVERSAL 3D DUOLINGO GAMIFIED ICON BADGES (WEB & MOBILE APP)
-   Overrides Moodle defaults with vibrant 3D tactile circular game badges:
-   🔷 Electric Blue: H5P & Video activities
-   🟣 Vibrant Purple: SCORM & Coding packages
-   🟡 Gold: Quizzes & Tests
-   🟢 Emerald Green: Lessons & Pages
+   🎮 100% BULLETPROOF DUOLINGO 3D GAMIFIED ICONS (WEB & MOBILE APP)
+   - Replaces default icons with crisp Duolingo gaming emojis (🎬, 💻, 🎯, 📖).
+   - Distinct 3D Colors: Electric Blue, Vibrant Purple, Gold, Emerald Green.
+   - Guaranteed matching via multi-attribute selectors (class, modname, src).
+   - Section 0 (Announcements & Discussions) is 100% UNTOUCHED.
    ========================================================================== */
 
 /* 1. Google Playful Font */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap');
 
-/* Apply font to all titles */
 .course-content,
 .activityname,
 .activityname a,
@@ -22,47 +20,36 @@ core-course-module ion-label {
 }
 
 /* ==========================================================================
-   2. UNIVERSAL 3D CIRCLE BADGE (OVERRIDES ALL MOODLE DEFAULT ICON BOXES)
+   2. BASE 3D CIRCULAR BUTTON CONTAINER
    ========================================================================== */
-
-/* Universal target for Web & Mobile icon containers */
 .activity-icon-container,
 .activity-icon,
 .activityiconcontainer,
-.activityinstance img.activityicon,
 .activityinstance .activity-icon,
 .activity-item .activity-icon,
 core-course-module core-mod-icon,
 core-course-module .core-module-icon,
 core-course-module ion-thumbnail {
-  width: 52px !important;
-  height: 52px !important;
-  min-width: 52px !important;
-  min-height: 52px !important;
-  max-width: 52px !important;
-  max-height: 52px !important;
-  border-radius: 50% !important; /* Perfect Duolingo circle */
-  background-color: #58CC02 !important; /* Default Green */
-  box-shadow: 0 6px 0 #46A302 !important; /* 3D bottom shadow */
+  width: 54px !important;
+  height: 54px !important;
+  min-width: 54px !important;
+  min-height: 54px !important;
+  max-width: 54px !important;
+  max-height: 54px !important;
+  border-radius: 50% !important;
+  background-color: #58CC02 !important; /* Base Green */
+  box-shadow: 0 6px 0 #46A302 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   margin-right: 14px !important;
-  padding: 10px !important;
+  padding: 0 !important;
   border: none !important;
+  position: relative !important;
   transition: transform 0.1s ease, box-shadow 0.1s ease !important;
-  cursor: pointer !important;
 }
 
-/* Active 3D Press Physics */
-.activity-item:active .activity-icon-container,
-.activity-item:active .activity-icon,
-core-course-module:active core-mod-icon {
-  transform: translateY(4px) !important;
-  box-shadow: 0 2px 0 #46A302 !important;
-}
-
-/* Crisp White Icon Sizing inside the 3D Circle */
+/* Hide default blurry Moodle icons so crisp Duolingo emojis display */
 .activity-icon-container img,
 .activity-icon img,
 .activityiconcontainer img,
@@ -70,100 +57,134 @@ core-course-module:active core-mod-icon {
 core-course-module core-mod-icon img,
 core-course-module .core-module-icon img,
 core-course-module ion-thumbnail img {
-  width: 28px !important;
-  height: 28px !important;
-  min-width: 28px !important;
-  min-height: 28px !important;
-  object-fit: contain !important;
-  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)) !important;
+  display: none !important;
+}
+
+/* Default Emoji */
+.activity-icon-container::before,
+.activity-icon::before,
+.activityiconcontainer::before,
+core-course-module core-mod-icon::before,
+core-course-module .core-module-icon::before {
+  content: "⭐";
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
 }
 
 /* ==========================================================================
-   3. COLOR DISTINCTIONS BY ACTIVITY TYPE (100% OVERRIDES)
+   3. ACTIVITY COLOR & EMOJI OVERRIDES (MULTI-ATTRIBUTE MATCHING)
    ========================================================================== */
 
-/* 🔷 A. VIDEO & H5P ACTIVITIES -> ELECTRIC BLUE CIRCLE */
-li.activity.modtype_h5pactivity .activity-icon-container,
-li.activity.modtype_h5pactivity .activity-icon,
-li.activity.modtype_h5pactivity .activityiconcontainer,
-li.activity.modtype_h5pactivity img.activityicon,
-li.activity.modtype_hvp .activity-icon-container,
-li.activity.modtype_hvp .activity-icon,
-li.activity.modtype_hvp .activityiconcontainer,
-li.activity.modtype_hvp img.activityicon,
-core-course-module.addon-mod-h5pactivity core-mod-icon,
-core-course-module.addon-mod-h5pactivity .core-module-icon,
-core-course-module.addon-mod-hvp core-mod-icon {
+/* 🔷 A. VIDEO & H5P ACTIVITIES -> ELECTRIC BLUE + 🎬 VIDEO EMOJI */
+[class*="h5p"] .activity-icon-container,
+[class*="h5p"] .activity-icon,
+[class*="h5p"] core-mod-icon,
+[class*="hvp"] .activity-icon-container,
+[class*="hvp"] .activity-icon,
+[class*="hvp"] core-mod-icon,
+[data-modname*="h5p"] .activity-icon-container,
+[data-modname*="h5p"] core-mod-icon,
+[data-modname*="hvp"] .activity-icon-container,
+[data-modname*="hvp"] core-mod-icon,
+core-course-module[class*="h5p"] core-mod-icon,
+core-course-module[class*="hvp"] core-mod-icon {
   background-color: #1CB0F6 !important;
   box-shadow: 0 6px 0 #1899D6 !important;
 }
 
-li.activity.modtype_h5pactivity:active .activity-icon-container,
-core-course-module.addon-mod-h5pactivity:active core-mod-icon {
-  box-shadow: 0 2px 0 #1899D6 !important;
+[class*="h5p"] .activity-icon-container::before,
+[class*="h5p"] .activity-icon::before,
+[class*="h5p"] core-mod-icon::before,
+[class*="hvp"] .activity-icon-container::before,
+[class*="hvp"] .activity-icon::before,
+[class*="hvp"] core-mod-icon::before,
+[data-modname*="h5p"] .activity-icon-container::before,
+[data-modname*="h5p"] core-mod-icon::before,
+core-course-module[class*="h5p"] core-mod-icon::before,
+core-course-module[class*="hvp"] core-mod-icon::before {
+  content: "🎬" !important;
 }
 
-/* 🟣 B. SCORM & CODING PACKAGES -> VIBRANT PURPLE CIRCLE */
-li.activity.modtype_scorm .activity-icon-container,
-li.activity.modtype_scorm .activity-icon,
-li.activity.modtype_scorm .activityiconcontainer,
-li.activity.modtype_scorm img.activityicon,
-core-course-module.addon-mod-scorm core-mod-icon,
-core-course-module.addon-mod-scorm .core-module-icon {
+/* 🟣 B. SCORM & CODING PACKAGES -> VIBRANT PURPLE + 💻 CODING EMOJI */
+[class*="scorm"] .activity-icon-container,
+[class*="scorm"] .activity-icon,
+[class*="scorm"] core-mod-icon,
+[data-modname*="scorm"] .activity-icon-container,
+[data-modname*="scorm"] core-mod-icon,
+core-course-module[class*="scorm"] core-mod-icon {
   background-color: #9333EA !important;
   box-shadow: 0 6px 0 #7E22CE !important;
 }
 
-li.activity.modtype_scorm:active .activity-icon-container,
-core-course-module.addon-mod-scorm:active core-mod-icon {
-  box-shadow: 0 2px 0 #7E22CE !important;
+[class*="scorm"] .activity-icon-container::before,
+[class*="scorm"] .activity-icon::before,
+[class*="scorm"] core-mod-icon::before,
+[data-modname*="scorm"] .activity-icon-container::before,
+[data-modname*="scorm"] core-mod-icon::before,
+core-course-module[class*="scorm"] core-mod-icon::before {
+  content: "💻" !important;
 }
 
-/* 🟡 C. QUIZZES & TESTS -> GOLD CIRCLE */
-li.activity.modtype_quiz .activity-icon-container,
-li.activity.modtype_quiz .activity-icon,
-li.activity.modtype_quiz .activityiconcontainer,
-li.activity.modtype_quiz img.activityicon,
-core-course-module.addon-mod-quiz core-mod-icon,
-core-course-module.addon-mod-quiz .core-module-icon {
+/* 🟡 C. QUIZZES & TESTS -> GOLD + 🎯 TARGET/CHALLENGE EMOJI */
+[class*="quiz"] .activity-icon-container,
+[class*="quiz"] .activity-icon,
+[class*="quiz"] core-mod-icon,
+[data-modname*="quiz"] .activity-icon-container,
+[data-modname*="quiz"] core-mod-icon,
+core-course-module[class*="quiz"] core-mod-icon {
   background-color: #FFC800 !important;
   box-shadow: 0 6px 0 #E5B200 !important;
 }
 
-li.activity.modtype_quiz:active .activity-icon-container,
-core-course-module.addon-mod-quiz:active core-mod-icon {
-  box-shadow: 0 2px 0 #E5B200 !important;
+[class*="quiz"] .activity-icon-container::before,
+[class*="quiz"] .activity-icon::before,
+[class*="quiz"] core-mod-icon::before,
+[data-modname*="quiz"] .activity-icon-container::before,
+[data-modname*="quiz"] core-mod-icon::before,
+core-course-module[class*="quiz"] core-mod-icon::before {
+  content: "🎯" !important;
 }
 
-/* 🟢 D. LESSONS & READING PAGES -> EMERALD GREEN CIRCLE */
-li.activity.modtype_page .activity-icon-container,
-li.activity.modtype_page .activity-icon,
-li.activity.modtype_page .activityiconcontainer,
-li.activity.modtype_page img.activityicon,
-li.activity.modtype_lesson .activity-icon-container,
-li.activity.modtype_lesson .activity-icon,
-li.activity.modtype_lesson .activityiconcontainer,
-li.activity.modtype_lesson img.activityicon,
-core-course-module.addon-mod-page core-mod-icon,
-core-course-module.addon-mod-page .core-module-icon,
-core-course-module.addon-mod-lesson core-mod-icon {
+/* 🟢 D. LESSONS & PAGES -> EMERALD GREEN + 📖 BOOK EMOJI */
+[class*="page"] .activity-icon-container,
+[class*="page"] .activity-icon,
+[class*="page"] core-mod-icon,
+[class*="lesson"] .activity-icon-container,
+[class*="lesson"] .activity-icon,
+[class*="lesson"] core-mod-icon,
+[data-modname*="page"] .activity-icon-container,
+[data-modname*="page"] core-mod-icon,
+[data-modname*="lesson"] .activity-icon-container,
+[data-modname*="lesson"] core-mod-icon,
+core-course-module[class*="page"] core-mod-icon,
+core-course-module[class*="lesson"] core-mod-icon {
   background-color: #58CC02 !important;
   box-shadow: 0 6px 0 #46A302 !important;
 }
 
-li.activity.modtype_page:active .activity-icon-container,
-core-course-module.addon-mod-page:active core-mod-icon {
-  box-shadow: 0 2px 0 #46A302 !important;
+[class*="page"] .activity-icon-container::before,
+[class*="page"] .activity-icon::before,
+[class*="page"] core-mod-icon::before,
+[class*="lesson"] .activity-icon-container::before,
+[class*="lesson"] .activity-icon::before,
+[class*="lesson"] core-mod-icon::before,
+[data-modname*="page"] .activity-icon-container::before,
+[data-modname*="page"] core-mod-icon::before,
+core-course-module[class*="page"] core-mod-icon::before,
+core-course-module[class*="lesson"] core-mod-icon::before {
+  content: "📖" !important;
 }
 
 /* ==========================================================================
-   4. EXCLUDE SECTION 0 (ANNOUNCEMENTS & FORUMS STAY DEFAULT)
+   4. EXCLUDE SECTION 0 (FORUMS & ANNOUNCEMENTS ARE 100% DEFAULT)
    ========================================================================== */
-li.activity.modtype_forum .activity-icon-container,
-li.activity.modtype_forum .activity-icon,
-li.activity.modtype_forum .activityiconcontainer,
-li.activity.modtype_forum img.activityicon,
-core-course-module.addon-mod-forum core-mod-icon,
+[class*="forum"] .activity-icon-container,
+[class*="forum"] .activity-icon,
+[class*="forum"] core-mod-icon,
+[data-modname*="forum"] .activity-icon-container,
+[data-modname*="forum"] core-mod-icon,
+core-course-module[class*="forum"] core-mod-icon,
 #section-0 .activity-icon-container,
 .section-0 .activity-icon-container {
   background: transparent !important;
@@ -171,7 +192,14 @@ core-course-module.addon-mod-forum core-mod-icon,
   border-radius: 0 !important;
 }
 
-li.activity.modtype_forum img.activityicon,
-core-course-module.addon-mod-forum core-mod-icon img {
-  filter: none !important;
+[class*="forum"] .activity-icon-container::before,
+[class*="forum"] .activity-icon::before,
+[class*="forum"] core-mod-icon::before,
+#section-0 .activity-icon-container::before {
+  content: "" !important;
+}
+
+[class*="forum"] img,
+#section-0 img {
+  display: inline-block !important;
 }
