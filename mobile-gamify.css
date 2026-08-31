@@ -1,151 +1,149 @@
 /* ==========================================================================
-   🎮 MOODLE GAMIFIED BADGES THEME (FOR COURSE 12 ONLY - "python-26")
-   Keeps standard Moodle clean list layout while transforming left icons into
-   Duolingo 3D interactive badges with clear Video vs. Coding distinctions.
-   Section 0 (General Discussions & Announcements) is completely untouched.
+   🎮 MOODLE GAMIFIED BADGES (STRICTLY SCOPED TO COURSE 12 - "python-26")
+   Fixes:
+   1. Zero bleed to other courses (Strict Course 12 Scoping).
+   2. Section 0 (Announcements, General Discussion, Intro) 100% UNTOUCHED.
+   3. Single crisp 3D icon badges with no double-shadows or gray artifacts.
+   4. Clear distinction: Electric Blue for H5P/Video vs. Purple for SCORM/Coding.
    ========================================================================== */
 
-/* 1. Target Course 12 Only & Import Duolingo Typography */
+/* 1. Google Playful Font (Loaded only for Course 12) */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap');
 
-:root {
-  --duo-font: 'Fredoka', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --duo-green: #58CC02;
-  --duo-green-dark: #46A302;
-  --duo-blue: #1CB0F6;
-  --duo-blue-dark: #1899D6;
-  --duo-gold: #FFC800;
-  --duo-gold-dark: #E5B200;
-  --duo-purple: #CE82FF;
-  --duo-purple-dark: #A855F7;
-  --duo-card-bg: #FFFFFF;
-  --duo-border: #E2E8F0;
+/* ==========================================================================
+   2. WEB VIEW: STRICTLY SCOPED TO COURSE 12 ONLY
+   ========================================================================== */
+
+/* Typography for Course 12 */
+body.course-12,
+body.course-12 .course-content,
+body.course-12 .activityname a {
+  font-family: 'Nunito', 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
-/* ==========================================================================
-   2. EXCLUDE SECTION 0 (GENERAL, ANNOUNCEMENTS, FORUMS ARE 100% UNTOUCHED)
-   ========================================================================== */
-body.course-12 .course-content #section-0 *,
-body.course-12 .course-content ul.topics li.section:first-child *,
-core-course-format .core-course-section-0 *,
-core-course-format core-course-module.addon-mod-forum * {
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-/* ==========================================================================
-   3. COURSE 12: UNIT HEADERS (SECTIONS 1+)
-   ========================================================================== */
-body.course-12 .course-content ul.topics li.section:not(:first-child) .sectionname,
-core-course-format ion-card.core-course-section-header:not(.core-course-section-0) {
-  background: linear-gradient(135deg, var(--duo-blue), #0F172A) !important;
+/* Unit Header Banners (Section 1 and above ONLY - Section 0 is untouched) */
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) .sectionname,
+body.course-12 .course-content .course-section:not(#section-0):not(:first-child) .sectionname {
+  background: linear-gradient(135deg, #1CB0F6, #0F172A) !important;
   color: #ffffff !important;
-  font-family: var(--duo-font) !important;
-  font-size: 1.15rem !important;
-  font-weight: 800 !important;
+  font-family: 'Fredoka', sans-serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  padding: 14px 20px !important;
   border-radius: 16px !important;
-  padding: 12px 18px !important;
-  margin: 18px 0 12px 0 !important;
-  box-shadow: 0 4px 12px rgba(28, 176, 246, 0.25) !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 14px rgba(28, 176, 246, 0.3) !important;
+}
+
+/* Activity Cards (Sections 1+ ONLY) */
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) li.activity {
+  background: #ffffff !important;
+  border: 2px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  padding: 10px 16px !important;
+  margin-bottom: 12px !important;
+  box-shadow: 0 3px 0 #CBD5E1 !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  transition: transform 0.1s ease !important;
 }
 
-/* ==========================================================================
-   4. COURSE 12: ACTIVITY CARDS (CLEAN DEFAULT MOODLE LIST WITH 3D PILLARS)
-   ========================================================================== */
-body.course-12 .course-content ul.topics li.section:not(:first-child) li.activity,
-core-course-format core-course-module:not(.core-course-section-0 core-course-module) {
-  background: var(--duo-card-bg) !important;
-  border: 2px solid var(--duo-border) !important;
-  border-radius: 18px !important;
-  margin-bottom: 12px !important;
-  padding: 10px 14px !important;
-  box-shadow: 0 3px 0 #CBD5E1, 0 6px 12px rgba(0, 0, 0, 0.04) !important;
-  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) li.activity:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 0 #CBD5E1 !important;
 }
 
-body.course-12 .course-content ul.topics li.section:not(:first-child) li.activity:active,
-core-course-format core-course-module:active {
-  transform: translateY(2px) !important;
-  box-shadow: 0 1px 0 #CBD5E1 !important;
-}
-
-/* Activity Titles in Course 12 */
-body.course-12 .course-content .activityinstance a,
-body.course-12 .course-content .activityname a,
-core-course-format core-course-module ion-label,
-core-course-format core-course-module .core-module-title {
-  font-family: var(--duo-font) !important;
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) .activityname a {
   font-size: 0.95rem !important;
   font-weight: 700 !important;
   color: #1E293B !important;
   text-decoration: none !important;
-  line-height: 1.3 !important;
 }
 
 /* ==========================================================================
-   5. DUOLINGO 3D LEFT-SIDE ICONS (CLEAR VIDEO VS. CODING DISTINCTIONS)
+   3. 3D ICON BADGES (NO DOUBLE ICONS, NO GRAY SHADOWS)
    ========================================================================== */
 
-/* Base 3D Icon Badge */
-body.course-12 .course-content .activityinstance img.activityicon,
-body.course-12 .course-content .activity-icon,
-core-course-format core-course-module core-mod-icon,
-core-course-format core-course-module ion-thumbnail {
-  width: 46px !important;
-  height: 46px !important;
-  min-width: 46px !important;
-  min-height: 46px !important;
-  border-radius: 14px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin-right: 14px !important;
+/* Base 3D Badge Shape for Activity Icons */
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) .activityinstance img.activityicon,
+body.course-12 .course-content ul.topics li.section:not(#section-0):not(:first-child) .activity-icon {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  border-radius: 12px !important;
   padding: 8px !important;
-  transition: transform 0.1s ease !important;
+  margin-right: 14px !important;
+  background-color: #58CC02 !important;
+  box-shadow: 0 4px 0 #46A302 !important;
+  object-fit: contain !important;
+  filter: none !important; /* Removes ghosting / double-shadow artifacts */
 }
 
-/* 🟢 A. VIDEO / H5P ACTIVITIES (ELECTRIC CYAN/BLUE 3D PLAY BADGE) */
+/* 🔷 A. VIDEO / H5P ACTIVITIES (ELECTRIC BLUE 3D BADGE) */
 body.course-12 .course-content li.activity.modtype_h5pactivity .activityicon,
 body.course-12 .course-content li.activity.modtype_hvp .activityicon,
-core-course-format core-course-module.addon-mod-h5pactivity core-mod-icon,
-core-course-format core-course-module.addon-mod-hvp core-mod-icon {
-  background-color: var(--duo-blue) !important;
-  box-shadow: 0 5px 0 var(--duo-blue-dark) !important;
-  border-radius: 14px !important;
+body.course-12 .course-content li.activity.modtype_h5pactivity .activity-icon,
+body.course-12 .course-content li.activity.modtype_hvp .activity-icon {
+  background-color: #1CB0F6 !important;
+  box-shadow: 0 4px 0 #1899D6 !important;
 }
 
-/* 🟣 B. SCORM / CODING EXERCISES (PURPLE ROCKET / CODE BADGE) */
+/* 🟣 B. SCORM / CODING PACKAGES (VIBRANT PURPLE 3D BADGE) */
 body.course-12 .course-content li.activity.modtype_scorm .activityicon,
-core-course-format core-course-module.addon-mod-scorm core-mod-icon {
-  background-color: var(--duo-purple) !important;
-  box-shadow: 0 5px 0 var(--duo-purple-dark) !important;
-  border-radius: 14px !important;
+body.course-12 .course-content li.activity.modtype_scorm .activity-icon {
+  background-color: #9333EA !important;
+  box-shadow: 0 4px 0 #7E22CE !important;
 }
 
-/* 🟡 C. QUIZZES / CHALLENGES (GOLD TROPHY / STAR BADGE) */
+/* 🟡 C. QUIZZES (GOLD 3D BADGE) */
 body.course-12 .course-content li.activity.modtype_quiz .activityicon,
-core-course-format core-course-module.addon-mod-quiz core-mod-icon {
-  background-color: var(--duo-gold) !important;
-  box-shadow: 0 5px 0 var(--duo-gold-dark) !important;
-  border-radius: 14px !important;
+body.course-12 .course-content li.activity.modtype_quiz .activity-icon {
+  background-color: #F59E0B !important;
+  box-shadow: 0 4px 0 #D97706 !important;
 }
 
-/* 🟢 D. LESSONS / PAGES / READING (EMERALD GREEN BOOK BADGE) */
+/* 🟢 D. LESSONS & PAGES (EMERALD GREEN 3D BADGE) */
 body.course-12 .course-content li.activity.modtype_page .activityicon,
 body.course-12 .course-content li.activity.modtype_lesson .activityicon,
-core-course-format core-course-module.addon-mod-page core-mod-icon,
-core-course-format core-course-module.addon-mod-lesson core-mod-icon {
-  background-color: var(--duo-green) !important;
-  box-shadow: 0 5px 0 var(--duo-green-dark) !important;
-  border-radius: 14px !important;
+body.course-12 .course-content li.activity.modtype_page .activity-icon,
+body.course-12 .course-content li.activity.modtype_lesson .activity-icon {
+  background-color: #58CC02 !important;
+  box-shadow: 0 4px 0 #46A302 !important;
 }
 
-/* Icon Sizing Inside 3D Badges */
-body.course-12 .course-content .activityinstance img.activityicon,
-core-course-format core-course-module core-mod-icon img,
-core-course-format core-course-module ion-thumbnail img {
-  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)) !important;
+/* ==========================================================================
+   4. MOODLE MOBILE APP STYLING (COURSE 12 SCOPED & SECTION 0 PROTECTED)
+   ========================================================================== */
+
+/* Scoped to Course 12 in Mobile App */
+page-core-course-section[course-id="12"] core-course-format core-course-module:not(.addon-mod-forum),
+core-course-format[data-course-id="12"] core-course-module:not(.addon-mod-forum) {
+  background: #ffffff !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: 16px !important;
+  margin: 8px 12px !important;
+  box-shadow: 0 3px 0 #CBD5E1 !important;
+}
+
+/* H5P / Video in Mobile App */
+page-core-course-section[course-id="12"] core-course-module.addon-mod-h5pactivity core-mod-icon,
+page-core-course-section[course-id="12"] core-course-module.addon-mod-hvp core-mod-icon {
+  --background: #1CB0F6 !important;
+  box-shadow: 0 4px 0 #1899D6 !important;
+  border-radius: 12px !important;
+}
+
+/* SCORM / Coding in Mobile App */
+page-core-course-section[course-id="12"] core-course-module.addon-mod-scorm core-mod-icon {
+  --background: #9333EA !important;
+  box-shadow: 0 4px 0 #7E22CE !important;
+  border-radius: 12px !important;
+}
+
+/* Quizzes in Mobile App */
+page-core-course-section[course-id="12"] core-course-module.addon-mod-quiz core-mod-icon {
+  --background: #F59E0B !important;
+  box-shadow: 0 4px 0 #D97706 !important;
+  border-radius: 12px !important;
 }
