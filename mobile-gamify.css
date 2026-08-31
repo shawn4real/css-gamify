@@ -1,151 +1,177 @@
 /* ==========================================================================
-   🎮 DUOLINGO 3D ICON BADGES THEME (WEB & MOBILE APP READY)
-   - Left-side icons transformed into 3D gaming badges.
-   - Electric Blue for H5P / Video activities.
-   - Vibrant Purple for SCORM / Coding packages.
-   - Gold for Quizzes & Tests.
-   - Section 0 (Announcements, Forums, General Discussions) is 100% UNTOUCHED.
+   🎮 UNIVERSAL 3D DUOLINGO GAMIFIED ICON BADGES (WEB & MOBILE APP)
+   Overrides Moodle defaults with vibrant 3D tactile circular game badges:
+   🔷 Electric Blue: H5P & Video activities
+   🟣 Vibrant Purple: SCORM & Coding packages
+   🟡 Gold: Quizzes & Tests
+   🟢 Emerald Green: Lessons & Pages
    ========================================================================== */
 
 /* 1. Google Playful Font */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap');
 
-/* ==========================================================================
-   2. MOODLE WEB BROWSER: 3D LEFT-SIDE ICON BADGES
-   ========================================================================== */
-
-/* Activity Titles & Font */
-body.course-12 .course-content,
-body.course-12 .activityname a,
-body.course-12 .instancename {
+/* Apply font to all titles */
+.course-content,
+.activityname,
+.activityname a,
+.instancename,
+core-course-module .core-module-title,
+core-course-module ion-label {
   font-family: 'Fredoka', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif !important;
   font-weight: 700 !important;
 }
 
-/* Base 3D Badge on Web */
-body.course-12 .activityicon,
-body.course-12 .activity-icon,
-body.course-12 .activityinstance img.activityicon {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  border-radius: 14px !important;
-  padding: 8px !important;
-  margin-right: 12px !important;
+/* ==========================================================================
+   2. UNIVERSAL 3D CIRCLE BADGE (OVERRIDES ALL MOODLE DEFAULT ICON BOXES)
+   ========================================================================== */
+
+/* Universal target for Web & Mobile icon containers */
+.activity-icon-container,
+.activity-icon,
+.activityiconcontainer,
+.activityinstance img.activityicon,
+.activityinstance .activity-icon,
+.activity-item .activity-icon,
+core-course-module core-mod-icon,
+core-course-module .core-module-icon,
+core-course-module ion-thumbnail {
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  border-radius: 50% !important; /* Perfect Duolingo circle */
+  background-color: #58CC02 !important; /* Default Green */
+  box-shadow: 0 6px 0 #46A302 !important; /* 3D bottom shadow */
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  object-fit: contain !important;
-  filter: none !important;
+  margin-right: 14px !important;
+  padding: 10px !important;
+  border: none !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+  cursor: pointer !important;
 }
 
-/* 🔷 A. VIDEO / H5P (ELECTRIC BLUE 3D BADGE) */
-body.course-12 li.activity.modtype_h5pactivity .activityicon,
-body.course-12 li.activity.modtype_h5pactivity .activity-icon,
-body.course-12 li.activity.modtype_hvp .activityicon,
-body.course-12 li.activity.modtype_hvp .activity-icon {
-  background-color: #1CB0F6 !important;
-  box-shadow: 0 5px 0 #1899D6 !important;
+/* Active 3D Press Physics */
+.activity-item:active .activity-icon-container,
+.activity-item:active .activity-icon,
+core-course-module:active core-mod-icon {
+  transform: translateY(4px) !important;
+  box-shadow: 0 2px 0 #46A302 !important;
 }
 
-/* 🟣 B. SCORM / CODING EXERCISES (VIBRANT PURPLE 3D BADGE) */
-body.course-12 li.activity.modtype_scorm .activityicon,
-body.course-12 li.activity.modtype_scorm .activity-icon {
-  background-color: #9333EA !important;
-  box-shadow: 0 5px 0 #7E22CE !important;
-}
-
-/* 🟡 C. QUIZZES (GOLD 3D BADGE) */
-body.course-12 li.activity.modtype_quiz .activityicon,
-body.course-12 li.activity.modtype_quiz .activity-icon {
-  background-color: #FFC800 !important;
-  box-shadow: 0 5px 0 #E5B200 !important;
-}
-
-/* 🟢 D. LESSONS / PAGES (EMERALD GREEN 3D BADGE) */
-body.course-12 li.activity.modtype_page .activityicon,
-body.course-12 li.activity.modtype_page .activity-icon,
-body.course-12 li.activity.modtype_lesson .activityicon,
-body.course-12 li.activity.modtype_lesson .activity-icon {
-  background-color: #58CC02 !important;
-  box-shadow: 0 5px 0 #46A302 !important;
-}
-
-/* ==========================================================================
-   3. MOODLE MOBILE APP (IONIC / CAPACITOR): 3D LEFT-SIDE ICON BADGES
-   ========================================================================== */
-
-/* Base 3D Badge on Mobile App */
-core-course-module.addon-mod-h5pactivity core-mod-icon,
-core-course-module.addon-mod-hvp core-mod-icon,
-core-course-module.addon-mod-scorm core-mod-icon,
-core-course-module.addon-mod-quiz core-mod-icon,
-core-course-module.addon-mod-page core-mod-icon,
-core-course-module.addon-mod-lesson core-mod-icon {
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
-  border-radius: 14px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin-right: 12px !important;
-}
-
-/* 🔷 A. VIDEO / H5P ON MOBILE APP */
-core-course-module.addon-mod-h5pactivity core-mod-icon,
-core-course-module.addon-mod-hvp core-mod-icon {
-  background-color: #1CB0F6 !important;
-  box-shadow: 0 5px 0 #1899D6 !important;
-}
-
-/* 🟣 B. SCORM / CODING ON MOBILE APP */
-core-course-module.addon-mod-scorm core-mod-icon {
-  background-color: #9333EA !important;
-  box-shadow: 0 5px 0 #7E22CE !important;
-}
-
-/* 🟡 C. QUIZZES ON MOBILE APP */
-core-course-module.addon-mod-quiz core-mod-icon {
-  background-color: #FFC800 !important;
-  box-shadow: 0 5px 0 #E5B200 !important;
-}
-
-/* 🟢 D. LESSONS / PAGES ON MOBILE APP */
-core-course-module.addon-mod-page core-mod-icon,
-core-course-module.addon-mod-lesson core-mod-icon {
-  background-color: #58CC02 !important;
-  box-shadow: 0 5px 0 #46A302 !important;
-}
-
-/* Make Activity Icons Crisp White Inside the 3D Badges */
-core-course-module.addon-mod-h5pactivity core-mod-icon img,
-core-course-module.addon-mod-hvp core-mod-icon img,
-core-course-module.addon-mod-scorm core-mod-icon img,
-core-course-module.addon-mod-quiz core-mod-icon img,
-core-course-module.addon-mod-page core-mod-icon img {
+/* Crisp White Icon Sizing inside the 3D Circle */
+.activity-icon-container img,
+.activity-icon img,
+.activityiconcontainer img,
+.activityinstance img.activityicon,
+core-course-module core-mod-icon img,
+core-course-module .core-module-icon img,
+core-course-module ion-thumbnail img {
   width: 28px !important;
   height: 28px !important;
-  filter: brightness(0) invert(1) !important;
-}
-
-/* Text & Title Styling on Mobile App */
-core-course-module .core-module-title,
-core-course-module ion-label {
-  font-family: 'Fredoka', 'Nunito', -apple-system, sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
-  color: #1E293B !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  object-fit: contain !important;
+  filter: brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2)) !important;
 }
 
 /* ==========================================================================
-   4. GENERAL SECTION & ANNOUNCEMENTS (EXCLUDED / UNTOUCHED)
-   Forum & Announcements have NO badges and remain standard.
+   3. COLOR DISTINCTIONS BY ACTIVITY TYPE (100% OVERRIDES)
    ========================================================================== */
+
+/* 🔷 A. VIDEO & H5P ACTIVITIES -> ELECTRIC BLUE CIRCLE */
+li.activity.modtype_h5pactivity .activity-icon-container,
+li.activity.modtype_h5pactivity .activity-icon,
+li.activity.modtype_h5pactivity .activityiconcontainer,
+li.activity.modtype_h5pactivity img.activityicon,
+li.activity.modtype_hvp .activity-icon-container,
+li.activity.modtype_hvp .activity-icon,
+li.activity.modtype_hvp .activityiconcontainer,
+li.activity.modtype_hvp img.activityicon,
+core-course-module.addon-mod-h5pactivity core-mod-icon,
+core-course-module.addon-mod-h5pactivity .core-module-icon,
+core-course-module.addon-mod-hvp core-mod-icon {
+  background-color: #1CB0F6 !important;
+  box-shadow: 0 6px 0 #1899D6 !important;
+}
+
+li.activity.modtype_h5pactivity:active .activity-icon-container,
+core-course-module.addon-mod-h5pactivity:active core-mod-icon {
+  box-shadow: 0 2px 0 #1899D6 !important;
+}
+
+/* 🟣 B. SCORM & CODING PACKAGES -> VIBRANT PURPLE CIRCLE */
+li.activity.modtype_scorm .activity-icon-container,
+li.activity.modtype_scorm .activity-icon,
+li.activity.modtype_scorm .activityiconcontainer,
+li.activity.modtype_scorm img.activityicon,
+core-course-module.addon-mod-scorm core-mod-icon,
+core-course-module.addon-mod-scorm .core-module-icon {
+  background-color: #9333EA !important;
+  box-shadow: 0 6px 0 #7E22CE !important;
+}
+
+li.activity.modtype_scorm:active .activity-icon-container,
+core-course-module.addon-mod-scorm:active core-mod-icon {
+  box-shadow: 0 2px 0 #7E22CE !important;
+}
+
+/* 🟡 C. QUIZZES & TESTS -> GOLD CIRCLE */
+li.activity.modtype_quiz .activity-icon-container,
+li.activity.modtype_quiz .activity-icon,
+li.activity.modtype_quiz .activityiconcontainer,
+li.activity.modtype_quiz img.activityicon,
+core-course-module.addon-mod-quiz core-mod-icon,
+core-course-module.addon-mod-quiz .core-module-icon {
+  background-color: #FFC800 !important;
+  box-shadow: 0 6px 0 #E5B200 !important;
+}
+
+li.activity.modtype_quiz:active .activity-icon-container,
+core-course-module.addon-mod-quiz:active core-mod-icon {
+  box-shadow: 0 2px 0 #E5B200 !important;
+}
+
+/* 🟢 D. LESSONS & READING PAGES -> EMERALD GREEN CIRCLE */
+li.activity.modtype_page .activity-icon-container,
+li.activity.modtype_page .activity-icon,
+li.activity.modtype_page .activityiconcontainer,
+li.activity.modtype_page img.activityicon,
+li.activity.modtype_lesson .activity-icon-container,
+li.activity.modtype_lesson .activity-icon,
+li.activity.modtype_lesson .activityiconcontainer,
+li.activity.modtype_lesson img.activityicon,
+core-course-module.addon-mod-page core-mod-icon,
+core-course-module.addon-mod-page .core-module-icon,
+core-course-module.addon-mod-lesson core-mod-icon {
+  background-color: #58CC02 !important;
+  box-shadow: 0 6px 0 #46A302 !important;
+}
+
+li.activity.modtype_page:active .activity-icon-container,
+core-course-module.addon-mod-page:active core-mod-icon {
+  box-shadow: 0 2px 0 #46A302 !important;
+}
+
+/* ==========================================================================
+   4. EXCLUDE SECTION 0 (ANNOUNCEMENTS & FORUMS STAY DEFAULT)
+   ========================================================================== */
+li.activity.modtype_forum .activity-icon-container,
+li.activity.modtype_forum .activity-icon,
+li.activity.modtype_forum .activityiconcontainer,
+li.activity.modtype_forum img.activityicon,
 core-course-module.addon-mod-forum core-mod-icon,
-body.course-12 li.activity.modtype_forum .activityicon {
-  background: none !important;
+#section-0 .activity-icon-container,
+.section-0 .activity-icon-container {
+  background: transparent !important;
   box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+li.activity.modtype_forum img.activityicon,
+core-course-module.addon-mod-forum core-mod-icon img {
+  filter: none !important;
 }
