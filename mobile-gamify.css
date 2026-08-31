@@ -1,49 +1,62 @@
 /* ==========================================================================
-   🎮 EXACT DUOLINGO GAMIFIED THEME FOR MOODLE MOBILE APP
+   🎮 DUOLINGO-STYLE GAMIFIED THEME FOR MOODLE MOBILE APP (OFFLINE READY)
    ========================================================================== */
 
+/* 1. Offline-Resilient Duolingo Typography */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Nunito:wght@700;800;900&display=swap');
 
-/* 1. Unit Gradient Header (With Pill & Trophy) */
+:root {
+  --duo-font-heading: 'Fredoka', 'DIN Round Pro', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --duo-green: #58CC02;
+  --duo-green-dark: #46A302;
+  --duo-blue: #1CB0F6;
+  --duo-blue-dark: #1899D6;
+  --duo-gold: #FFC800;
+  --duo-gold-dark: #E5B200;
+  --duo-purple: #CE82FF;
+  --duo-fire: #FF9600;
+}
+
+/* 2. Unit Gradient Header (With Trophy) */
 core-course-format ion-card.core-course-section-header,
 core-course-format .core-course-section-header,
 core-course-format .core-course-section-title {
-  background: linear-gradient(135deg, #58CC02, #0F172A) !important;
+  background: linear-gradient(135deg, var(--duo-green), #0F172A) !important;
   color: #ffffff !important;
-  border-radius: 24px !important;
-  padding: 16px 20px !important;
-  margin: 16px auto 30px auto !important;
-  max-width: 90% !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 22px !important;
+  padding: 14px 18px !important;
+  margin: 16px auto 28px auto !important;
+  max-width: 92% !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  font-family: 'Fredoka', -apple-system, sans-serif !important;
-  font-size: 1.3rem !important;
-  font-weight: 700 !important;
+  font-family: var(--duo-font-heading) !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.4px !important;
   border: none !important;
 }
 
-/* Add Trophy 🏆 to Section Header */
+/* Trophy Icon on Header */
 core-course-format .core-course-section-title::after {
   content: "🏆";
-  font-size: 1.8rem;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  font-size: 1.6rem;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
 }
 
-/* 2. Serpentine Zigzag Layout */
+/* 3. Serpentine Zigzag Flow */
 core-course-format ion-list {
   background: transparent !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  gap: 32px !important;
-  padding: 10px 0 60px 0 !important;
+  gap: 36px !important;
+  padding: 10px 0 70px 0 !important;
 }
 
 core-course-format core-course-module {
   width: 100% !important;
-  max-width: 240px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -61,36 +74,40 @@ core-course-format core-course-module:nth-child(4n+2) { transform: translateX(-6
 core-course-format core-course-module:nth-child(4n+3) { transform: translateX(0); }
 core-course-format core-course-module:nth-child(4n+4) { transform: translateX(65px); }
 
-/* 3. Floating "START! ★" Bubble on First Activity */
+/* 4. Floating "START! ★" Bubble on First Activity */
 core-course-format core-course-module:first-child::before {
   content: "START! ★";
   position: absolute;
-  top: -26px;
-  background: #58CC02;
+  top: -28px;
+  background: var(--duo-green);
   color: #ffffff;
-  font-family: 'Fredoka', -apple-system, sans-serif;
-  font-size: 0.75rem;
+  font-family: var(--duo-font-heading);
+  font-size: 0.72rem;
   font-weight: 800;
   padding: 4px 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.4);
+  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.45);
   z-index: 10;
+  letter-spacing: 0.5px;
 }
 
-/* 4. Perfect 3D Circular Node (Icon in the middle) */
+/* 5. 3D Circular Button Container */
 core-course-format core-course-module ion-item {
   --background: transparent !important;
   --inner-padding-end: 0 !important;
   --padding-start: 0 !important;
+  --min-height: auto !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   width: 100% !important;
+  background: transparent !important;
+  border: none !important;
 }
 
-/* Circular 3D Button */
+/* Perfect 3D Circular Button */
 core-course-format core-course-module core-mod-icon,
 core-course-format core-course-module ion-thumbnail,
 core-course-format core-course-module .core-module-icon {
@@ -99,52 +116,81 @@ core-course-format core-course-module .core-module-icon {
   min-width: 76px !important;
   min-height: 76px !important;
   border-radius: 50% !important;
-  background-color: #58CC02 !important;
-  box-shadow: 0 8px 0 #46A302 !important;
+  background-color: var(--duo-green) !important;
+  box-shadow: 0 8px 0 var(--duo-green-dark) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   margin: 0 auto !important;
   transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+  cursor: pointer !important;
 }
 
 core-course-format core-course-module:active core-mod-icon,
 core-course-format core-course-module:active ion-thumbnail {
   transform: translateY(6px) !important;
-  box-shadow: 0 2px 0 #46A302 !important;
+  box-shadow: 0 2px 0 var(--duo-green-dark) !important;
 }
 
-/* Icon / Emoji Sizing inside the Circle */
+/* Icon / Emoji inside the Circle */
 core-course-format core-course-module core-mod-icon img,
 core-course-format core-course-module ion-thumbnail img {
-  width: 36px !important;
-  height: 36px !important;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15)) !important;
+  width: 38px !important;
+  height: 38px !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15)) !important;
 }
 
 /* Quiz Specific Gold Circle */
 core-course-format core-course-module.addon-mod-quiz core-mod-icon,
 core-course-format core-course-module.addon-mod-quiz ion-thumbnail {
-  background-color: #FFC800 !important;
-  box-shadow: 0 8px 0 #E5B200 !important;
+  background-color: var(--duo-gold) !important;
+  box-shadow: 0 8px 0 var(--duo-gold-dark) !important;
 }
 
 /* SCORM & H5P Specific Blue Circle */
 core-course-format core-course-module.addon-mod-scorm core-mod-icon,
 core-course-format core-course-module.addon-mod-h5pactivity core-mod-icon {
-  background-color: #1CB0F6 !important;
-  box-shadow: 0 8px 0 #1899D6 !important;
+  background-color: var(--duo-blue) !important;
+  box-shadow: 0 8px 0 var(--duo-blue-dark) !important;
 }
 
-/* 5. Activity Title OUTSIDE and UNDERNEATH the Circle */
+/* 6. Activity Title OUTSIDE Circle (Auto-Width, Small, Bold, Balanced) */
 core-course-format core-course-module ion-label,
-core-course-format core-course-module .core-module-title {
-  margin-top: 10px !important;
-  font-family: 'Fredoka', -apple-system, sans-serif !important;
-  font-size: 0.95rem !important;
-  font-weight: 700 !important;
+core-course-format core-course-module .core-module-title,
+core-course-format core-course-module .item-title {
+  display: block !important;
+  margin: 10px auto 0 auto !important;
+  padding: 4px 10px !important;
+  
+  /* Dynamic width: Expands naturally for long text, stays compact for short text */
+  width: auto !important;
+  min-width: 90px !important;
+  max-width: 170px !important;
+  
+  /* Duolingo Bold Small Typography */
+  font-family: var(--duo-font-heading) !important;
+  font-size: 0.82rem !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.2px !important;
   color: #1E293B !important;
+  
+  /* Balanced multi-line text centering */
   text-align: center !important;
+  text-wrap: balance !important;
+  word-break: break-word !important;
   white-space: normal !important;
   overflow: visible !important;
+
+  /* Subtle Clean Pill Badge */
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  border: 1.5px solid #E2E8F0 !important;
+}
+
+/* Hide completion checkboxes from cluttering the circle on mobile */
+core-course-format core-course-module core-completion-details,
+core-course-format core-course-module core-course-module-completion {
+  margin-top: 4px !important;
 }
